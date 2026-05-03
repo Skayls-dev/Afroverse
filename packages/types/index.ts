@@ -58,6 +58,28 @@ export interface DiagnosticFormData {
   problemes: string[]
 }
 
+export interface EtapeRoutine {
+  id: string
+  slug: string
+  titre: string
+  description: string
+  emoji: string
+  frequence: string
+  duree_minutes: number | null
+  quand: string | null
+  produits_types: string | null
+  accessoires: string | null
+  ordre_defaut: number
+  universelle: boolean
+  types_compatibles: string[] | null
+  porosites_cibles: string[] | null
+  problemes_cibles: string[] | null
+  nom_routine: string | null
+  photo_url: string | null
+  video_url: string | null
+  premium: boolean
+}
+
 export interface MarqueB2B {
   id: string
   nom: string
