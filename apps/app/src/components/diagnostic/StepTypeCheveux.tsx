@@ -1,4 +1,4 @@
-import type { TypeCheveux } from '@afroverse/types'
+import type { TypeCheveux } from '@alwaysafro/types'
 import { useDiagnosticStore } from '../../store/diagnosticStore'
 
 const types: { value: TypeCheveux; label: string; desc: string; image?: string }[] = [

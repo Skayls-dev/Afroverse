@@ -20,10 +20,10 @@ importers:
 
   apps/app:
     dependencies:
-      '@afroverse/supabase':
+      '@alwaysafro/supabase':
         specifier: workspace:*
         version: link:../../packages/supabase
-      '@afroverse/types':
+      '@alwaysafro/types':
         specifier: workspace:*
         version: link:../../packages/types
       '@hookform/resolvers':
@@ -87,10 +87,10 @@ importers:
 
   apps/landing:
     dependencies:
-      '@afroverse/supabase':
+      '@alwaysafro/supabase':
         specifier: workspace:*
         version: link:../../packages/supabase
-      '@afroverse/types':
+      '@alwaysafro/types':
         specifier: workspace:*
         version: link:../../packages/types
       '@supabase/supabase-js':

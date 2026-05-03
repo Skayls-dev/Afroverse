@@ -1,4 +1,4 @@
-import type { Elasticite } from '@afroverse/types'
+import type { Elasticite } from '@alwaysafro/types'
 import { useDiagnosticStore } from '../../store/diagnosticStore'
 
 const options: { value: Elasticite; label: string; hint: string }[] = [

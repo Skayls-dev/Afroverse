@@ -27,7 +27,7 @@ export default function Login() {
       <div className="w-full max-w-sm">
         <img
           src="/logoAfroverse.png"
-          alt="AfroVerse"
+          alt="AlwaysAfro"
           className="mx-auto mb-3 w-44 sm:w-48 h-auto"
         />
         <p className="text-gray-400 text-center mb-8">Connecte-toi à ton espace</p>

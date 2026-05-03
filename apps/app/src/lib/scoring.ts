@@ -1,4 +1,4 @@
-import type { DiagnosticFormData } from '@afroverse/types'
+import type { DiagnosticFormData } from '@alwaysafro/types'
 
 export interface ProblemeScore {
   id: string
@@ -175,7 +175,7 @@ export function computeDiagnosticResult(data: DiagnosticFormData): DiagnosticRes
   const priorite = computePriorite(data)
   const profil = computeProfilLabel(data)
 
-  const shareText = `🌿 Mon profil AfroVerse : ${profil}\nPriorité : ${priorite}\nDécouvre ta routine sur afroverse.app`
+  const shareText = `🌿 Mon profil AlwaysAfro : ${profil}\nPriorité : ${priorite}\nDécouvre ta routine sur alwaysafro.app`
 
   return {
     prioriteAbsolue: priorite,

@@ -15,14 +15,14 @@ const bodyFont = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'AfroVerse — La routine beauté afro faite pour toi',
+  title: 'AlwaysAfro — La routine beauté afro faite pour toi',
   description: 'Diagnostic beauté personnalisé pour cheveux et peau afro. Trouve enfin les produits et la routine qui te correspondent.',
   keywords: ['cosmétique afro', 'diagnostic beauté', 'cheveux afro', 'soins peau noire', 'routine beauté'],
   openGraph: {
-    title: 'AfroVerse — La routine beauté afro faite pour toi',
+    title: 'AlwaysAfro — La routine beauté afro faite pour toi',
     description: 'Diagnostic beauté personnalisé pour cheveux et peau afro. Trouve enfin les produits et la routine qui te correspondent.',
-    url: 'https://afroverse.com',
-    siteName: 'AfroVerse',
+    url: 'https://alwaysafro.com',
+    siteName: 'AlwaysAfro',
   }
 }
 

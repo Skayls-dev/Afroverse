@@ -1,5 +1,5 @@
 {
-  "name": "@afroverse/types",
+  "name": "@alwaysafro/types",
   "version": "0.0.1",
   "main": "./index.ts",
   "exports": { ".": "./index.ts" }

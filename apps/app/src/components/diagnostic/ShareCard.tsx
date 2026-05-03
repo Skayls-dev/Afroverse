@@ -12,7 +12,7 @@ export default function ShareCard({ result, isOpen, onClose }: ShareCardProps) {
 
   if (!isOpen) return null
 
-  const shareUrl = 'https://afroverse.app/diagnostic'
+  const shareUrl = 'https://alwaysafro.app/diagnostic'
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(`${result.shareText}\n${shareUrl}`)
@@ -28,7 +28,7 @@ export default function ShareCard({ result, isOpen, onClose }: ShareCardProps) {
   const handleWebShare = async () => {
     if (navigator.share) {
       await navigator.share({
-        title: 'Mon profil AfroVerse',
+        title: 'Mon profil AlwaysAfro',
         text: result.shareText,
         url: shareUrl,
       }).catch(() => null)
@@ -56,7 +56,7 @@ export default function ShareCard({ result, isOpen, onClose }: ShareCardProps) {
         {/* Visual card */}
         <div className="bg-gradient-to-br from-[#1D9E75]/20 to-[#0f0f0f] border border-[#1D9E75]/30 rounded-2xl p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-[#1D9E75] font-bold text-lg">AfroVerse</span>
+            <span className="text-[#1D9E75] font-bold text-lg">AlwaysAfro</span>
             <span className="text-xs text-gray-400 bg-white/5 rounded-full px-3 py-1">Mon profil</span>
           </div>
           <p className="text-white font-semibold">{result.profilLabel}</p>

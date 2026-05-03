@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { DiagnosticFormData } from '@afroverse/types'
+import type { DiagnosticFormData } from '@alwaysafro/types'
 
 interface DiagnosticStore {
   step: number

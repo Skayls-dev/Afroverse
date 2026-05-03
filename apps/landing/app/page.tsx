@@ -8,11 +8,10 @@ export default function Home() {
     <main className="page-shell">
       <div className="container">
         <header className="topbar">
-          <a href="/" className="brand" aria-label="AfroVerse">
+          <a href="/" className="brand" aria-label="AlwaysAfro">
             <Image
               src="/logoAfroverse.png"
-              alt="AfroVerse"
-              width={236}
+              alt="AlwaysAfro"
               height={72}
               priority
               className="brand-logo"
@@ -34,7 +33,7 @@ export default function Home() {
               <span className="hero-title-gradient">une routine qui te ressemble vraiment.</span>
             </h1>
             <p className="lead">
-              Arrete de chercher. AfroVerse analyse ta texture, ta porosite et ta peau afro
+              Arrete de chercher. AlwaysAfro analyse ta texture, ta porosite et ta peau afro
               pour te donner exactement ce dont tu as besoin - en 2 minutes.
             </p>
             <div className="actions">
@@ -82,10 +81,10 @@ export default function Home() {
         </section>
 
         <section className="section guide-section">
-          <h2 className="section-title">AfroVerse &mdash; ta r&eacute;f&eacute;rence cosm&eacute;tique afro</h2>
+          <h2 className="section-title">AlwaysAfro &mdash; ta r&eacute;f&eacute;rence cosm&eacute;tique afro</h2>
           <p className="section-lead">
             On sait ce que c\'est - passer des heures a chercher, essayer, decevoir. La cosmetique afro est riche,
-            diverse, puissante. Mais elle demande une approche sur mesure. AfroVerse transforme ton profil unique
+            diverse, puissante. Mais elle demande une approche sur mesure. AlwaysAfro transforme ton profil unique
             en un plan beaute clair, actionnable et vraiment adapte a toi.
           </p>
           <div className="proof-grid">
@@ -106,7 +105,7 @@ export default function Home() {
             </article>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem', padding: '1rem', background: 'var(--color-surface-2)', borderRadius: '12px', border: '1px solid var(--color-border)' }}>
-            <Image src="/logoAfroverse.png" alt="AfroVerse" width={120} height={36} style={{ objectFit: 'contain' }} />
+            <Image src="/logoAfroverse.png" alt="AlwaysAfro" width={120} height={36} style={{ objectFit: 'contain' }} />
             <p style={{ color: 'var(--color-text-muted)', fontSize: '0.92rem', fontWeight: 700 }}>
               Con&ccedil;u par des passionn&eacute;s de beaut&eacute; afro
             </p>
@@ -135,7 +134,7 @@ export default function Home() {
             <div className="profile-preview-photo-wrap">
               <img
                 src="/profilegenere.png"
-                alt="Ton profil beaute AfroVerse"
+                alt="Ton profil beaute AlwaysAfro"
                 className="profile-preview-photo"
               />
               <div className="profile-preview-badge">
@@ -216,7 +215,7 @@ export default function Home() {
         </section>
 
         <section className="section success-section">
-          <h2 className="section-title">Avec AfroVerse, tu&hellip;</h2>
+          <h2 className="section-title">Avec AlwaysAfro, tu&hellip;</h2>
           <p className="section-lead">Imagine te regarder dans le miroir et te reconnaître. C&apos;est possible.</p>
           <div className="grid-3">
             {[
@@ -232,7 +231,7 @@ export default function Home() {
           </div>
           <blockquote className="testimonial">
             <p>
-              "Depuis mon diagnostic AfroVerse, j&apos;ai arrete de tatonner.
+              "Depuis mon diagnostic AlwaysAfro, j&apos;ai arrete de tatonner.
               Je sais exactement ce que mes cheveux et ma peau ont besoin."
             </p>
             <footer>- Amara K., Brussels</footer>
@@ -262,10 +261,10 @@ export default function Home() {
         </section>
 
         <footer className="footer">
-          <a href="/" className="brand brand-footer" aria-label="AfroVerse">
+          <a href="/" className="brand brand-footer" aria-label="AlwaysAfro">
             <Image
               src="/logoAfroverse.png"
-              alt="AfroVerse"
+              alt="AlwaysAfro"
               width={196}
               height={60}
               className="brand-logo brand-logo-footer"

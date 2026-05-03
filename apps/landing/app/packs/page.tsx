@@ -82,8 +82,8 @@ export default function PacksPage() {
       <div className="container">
         {/* Topbar */}
         <header className="topbar">
-          <a href="/" className="brand" aria-label="AfroVerse">
-            <Image src="/logoAfroverse.png" alt="AfroVerse" width={196} height={60} priority className="brand-logo" />
+          <a href="/" className="brand" aria-label="AlwaysAfro">
+            <Image src="/logoAfroverse.png" alt="AlwaysAfro" width={196} height={60} priority className="brand-logo" />
           </a>
           <nav className="topbar-nav">
             <a href="/" className="topbar-link">← Retour</a>
@@ -187,13 +187,13 @@ export default function PacksPage() {
           <p className="cta-text">Discutons de votre projet. Notre équipe vous répond sous 48 h.</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href="/partenaires" className="btn btn-light">Parler à un conseiller</a>
-            <a href="mailto:contact@afroverse.app" className="btn btn-ghost">contact@afroverse.app</a>
+            <a href="mailto:contact@alwaysafro.app" className="btn btn-ghost">contact@alwaysafro.app</a>
           </div>
         </section>
 
         <footer className="footer">
-          <a href="/" className="brand brand-footer" aria-label="AfroVerse">
-            <Image src="/logoAfroverse.png" alt="AfroVerse" width={168} height={52} className="brand-logo brand-logo-footer" />
+          <a href="/" className="brand brand-footer" aria-label="AlwaysAfro">
+            <Image src="/logoAfroverse.png" alt="AlwaysAfro" width={168} height={52} className="brand-logo brand-logo-footer" />
           </a>
           <div className="footer-links">
             <a href="/">Accueil</a>

@@ -7,7 +7,7 @@ export default function PartenairesPage() {
       <header className="topbar">
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <a href="/" style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--color-primary)', textDecoration: 'none' }}>
-            AfroVerse
+            AlwaysAfro
           </a>
           <a href="/" className="btn btn-ghost" style={{ fontSize: '0.875rem' }}>
             ← Retour
@@ -23,7 +23,7 @@ export default function PartenairesPage() {
             Atteignez vos clientes afro avec une précision inégalée
           </h1>
           <p className="section-lead" style={{ maxWidth: '560px', margin: '0 auto 2.5rem' }}>
-            AfroVerse est la première plateforme de profils capillaires afro déclaratifs en France.
+            AlwaysAfro est la première plateforme de profils capillaires afro déclaratifs en France.
             Vos produits, matchés aux bons profils — sans approximation.
           </p>
 
@@ -82,7 +82,7 @@ export default function PartenairesPage() {
               <p style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem' }}>Enterprise</p>
               <p style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '1.5rem' }}>Sur devis</p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', flex: 1 }}>
-                {['Tout Pro inclus', 'Accès API données brutes', 'Co-branding AfroVerse', 'Étude capillaire custom', 'Account manager dédié'].map((f) => (
+                {['Tout Pro inclus', 'Accès API données brutes', 'Co-branding AlwaysAfro', 'Étude capillaire custom', 'Account manager dédié'].map((f) => (
                   <li key={f} style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', display: 'flex', gap: '0.5rem' }}>
                     <span style={{ color: 'var(--color-secondary)', flexShrink: 0 }}>✓</span>{f}
                   </li>
@@ -104,10 +104,10 @@ export default function PartenairesPage() {
         </div>
       </section>
 
-      {/* Pourquoi AfroVerse data */}
+      {/* Pourquoi AlwaysAfro data */}
       <section className="section" style={{ background: 'var(--color-surface)', paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
         <div className="container">
-          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>Pourquoi AfroVerse data ?</h2>
+          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>Pourquoi AlwaysAfro data ?</h2>
           <div className="grid-3">
             <div className="feature-card">
               <p style={{ fontSize: '1.5rem', marginBottom: '0.75rem' }}>📋</p>
@@ -137,9 +137,9 @@ export default function PartenairesPage() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p style={{ fontWeight: 700, marginBottom: '0.5rem' }}>AfroVerse</p>
+          <p style={{ fontWeight: 700, marginBottom: '0.5rem' }}>AlwaysAfro</p>
           <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}>
-            © {new Date().getFullYear()} AfroVerse — Tous droits réservés
+            © {new Date().getFullYear()} AlwaysAfro — Tous droits réservés
           </p>
         </div>
       </footer>

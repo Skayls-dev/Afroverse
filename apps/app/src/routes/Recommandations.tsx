@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/useAuth'
 import { useProfil } from '../hooks/useProfil'
 import { useRoutines } from '../hooks/useRoutines'
 import { supabase } from '../lib/supabase'
-import type { EtapeRoutine, Produit } from '@afroverse/types'
+import type { EtapeRoutine, Produit } from '@alwaysafro/types'
 
 function EtapeCard({ etape, expanded, onToggle }: {
   etape: EtapeRoutine

@@ -1,5 +1,5 @@
 {
-  "name": "@afroverse/supabase",
+  "name": "@alwaysafro/supabase",
   "version": "0.0.1",
   "main": "./client.ts",
   "exports": {

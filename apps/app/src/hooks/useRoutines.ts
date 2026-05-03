@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
-import type { Profil, EtapeRoutine } from '@afroverse/types'
+import type { Profil, EtapeRoutine } from '@alwaysafro/types'
 
 export function useRoutines(profil: Profil | null): { etapes: EtapeRoutine[]; loading: boolean; error: string | null } {
   const [etapes, setEtapes] = useState<EtapeRoutine[]>([])

@@ -9,8 +9,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
       manifest: {
-        name: 'AfroVerse',
-        short_name: 'AfroVerse',
+        name: 'AlwaysAfro',
+        short_name: 'AlwaysAfro',
         description: 'Ton diagnostic capillaire personnalisé',
         theme_color: '#1D9E75',
         background_color: '#0f0f0f',

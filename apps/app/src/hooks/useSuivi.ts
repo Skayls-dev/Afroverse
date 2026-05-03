@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
-import type { Suivi } from '@afroverse/types'
+import type { Suivi } from '@alwaysafro/types'
 
 export function useSuivi(userId: string | undefined) {
   const [suivis, setSuivis] = useState<Suivi[]>([])

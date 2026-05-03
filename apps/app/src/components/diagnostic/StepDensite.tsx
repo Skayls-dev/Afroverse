@@ -1,4 +1,4 @@
-import type { Densite } from '@afroverse/types'
+import type { Densite } from '@alwaysafro/types'
 import { useDiagnosticStore } from '../../store/diagnosticStore'
 
 const options: { value: Densite; label: string; hint: string }[] = [

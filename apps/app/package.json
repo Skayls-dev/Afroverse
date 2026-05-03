@@ -10,8 +10,8 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@afroverse/supabase": "workspace:*",
-        "@afroverse/types": "workspace:*",
+        "@alwaysafro/supabase": "workspace:*",
+        "@alwaysafro/types": "workspace:*",
         "@hookform/resolvers": "latest",
         "@supabase/supabase-js": "^2.105.1",
         "lucide-react": "latest",

@@ -1,5 +1,5 @@
 -- ============================================================
--- AfroVerse — Vues analytiques B2B anonymisées
+-- AlwaysAfro — Vues analytiques B2B anonymisées
 -- Usage : dashboard Brand Intelligence pour les partenaires marques
 -- IMPORTANT : aucune donnée personnelle identifiable exposée
 --   (pas d'id utilisateur, pas d'email, uniquement agrégats)

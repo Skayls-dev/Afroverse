@@ -1,4 +1,4 @@
-import type { Porosite } from '@afroverse/types'
+import type { Porosite } from '@alwaysafro/types'
 import { useDiagnosticStore } from '../../store/diagnosticStore'
 
 const porosites: { value: Porosite; label: string; desc: string }[] = [
