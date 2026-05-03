@@ -25,7 +25,11 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <h1 className="text-3xl font-bold text-[#1D9E75] mb-2 text-center">AfroVerse</h1>
+        <img
+          src="/logoAfroverse.png"
+          alt="AfroVerse"
+          className="mx-auto mb-3 w-44 sm:w-48 h-auto"
+        />
         <p className="text-gray-400 text-center mb-8">Connecte-toi à ton espace</p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

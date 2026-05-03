@@ -15,12 +15,12 @@ const bodyFont = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'AfroVerse — Le diagnostic capillaire pour cheveux afro-texturés',
-  description: 'Découvrez votre profil capillaire unique. Recommandations produits personnalisées pour cheveux 3A à 4C.',
-  keywords: ['cheveux afro', 'diagnostic capillaire', 'produits naturels', 'porosité cheveux'],
+  title: 'AfroVerse — La routine beauté afro faite pour toi',
+  description: 'Diagnostic beauté personnalisé pour cheveux et peau afro. Trouve enfin les produits et la routine qui te correspondent.',
+  keywords: ['cosmétique afro', 'diagnostic beauté', 'cheveux afro', 'soins peau noire', 'routine beauté'],
   openGraph: {
-    title: 'AfroVerse',
-    description: 'La plateforme de référence pour cheveux afro-européens',
+    title: 'AfroVerse — La routine beauté afro faite pour toi',
+    description: 'Diagnostic beauté personnalisé pour cheveux et peau afro. Trouve enfin les produits et la routine qui te correspondent.',
     url: 'https://afroverse.com',
     siteName: 'AfroVerse',
   }
