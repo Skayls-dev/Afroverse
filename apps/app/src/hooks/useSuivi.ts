@@ -19,5 +19,5 @@ export function useSuivi(userId: string | undefined) {
       })
   }, [userId])
 
-  return { suivis, loading }
+  return { suivis, setSuivis, loading }
 }

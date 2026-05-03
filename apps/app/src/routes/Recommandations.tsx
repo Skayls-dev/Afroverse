@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/shared/Navbar'
 import { useAuth } from '../hooks/useAuth'
 import { useProfil } from '../hooks/useProfil'
 import { useRoutines } from '../hooks/useRoutines'
-import type { EtapeRoutine } from '@afroverse/types'
+import { supabase } from '../lib/supabase'
+import type { EtapeRoutine, Produit } from '@afroverse/types'
 
 function EtapeCard({ etape, expanded, onToggle }: {
   etape: EtapeRoutine
@@ -66,6 +67,36 @@ export default function Recommandations() {
   const { etapes, loading: etapesLoading, error } = useRoutines(profil)
   const loading = profilLoading || etapesLoading
   const [expandedId, setExpandedId] = useState<string | null>(null)
+
+  const [produits, setProduits] = useState<Produit[]>([])
+  const [produitsLoading, setProduitsLoading] = useState(false)
+
+  useEffect(() => {
+    if (!profil) return
+    setProduitsLoading(true)
+    supabase
+      .from('produits')
+      .select('*')
+      .contains('types_compatibles', [profil.type_cheveux])
+      .contains('porosites_compatibles', [profil.porosite])
+      .then(({ data }) => {
+        const raw: Produit[] = data ?? []
+        const scored = raw
+          .map((p) => {
+            let score = 0
+            if (p.types_compatibles?.includes(profil.type_cheveux)) score += 2
+            if (p.porosites_compatibles?.includes(profil.porosite)) score += 2
+            profil.objectifs.forEach((obj) => {
+              if (p.categorie?.toLowerCase().includes(obj.toLowerCase())) score += 1
+            })
+            return { ...p, _score: score }
+          })
+          .sort((a, b) => b._score - a._score)
+          .slice(0, 6)
+        setProduits(scored)
+        setProduitsLoading(false)
+      })
+  }, [profil?.id, profil?.porosite, profil?.type_cheveux])
 
   const universelles = etapes.filter((e) => e.universelle)
   const specifiques = etapes.filter((e) => !e.universelle)
@@ -156,6 +187,46 @@ export default function Recommandations() {
               </p>
             </div>
           </>
+        )}
+
+        {/* Produits recommandés */}
+        {profil && !loading && (
+          <div className="mt-8">
+            <h2 className="text-lg font-bold text-white mb-4">Produits recommandés pour toi</h2>
+            {produitsLoading ? (
+              <div className="space-y-3">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="h-20 rounded-xl bg-white/5 animate-pulse" />
+                ))}
+              </div>
+            ) : produits.length === 0 ? (
+              <p className="text-gray-400 text-sm text-center py-6">Le catalogue arrive bientôt 🌿</p>
+            ) : (
+              <div className="space-y-3">
+                {produits.map((p) => (
+                  <div key={p.id} className="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white font-bold text-sm leading-tight">{p.nom}</p>
+                        <p className="text-gray-400 text-xs mt-0.5">{p.marque}</p>
+                        {p.ingredients && p.ingredients.length > 0 && (
+                          <p className="text-gray-500 text-xs mt-1">
+                            {p.ingredients.slice(0, 3).join(' · ')}
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                        <span className="text-white font-semibold text-sm">{p.prix} €</span>
+                        <span className="bg-[#534AB7]/20 text-[#534AB7] text-[10px] rounded-full px-2 py-0.5">
+                          {p.categorie}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         )}
       </div>
       <Navbar />
