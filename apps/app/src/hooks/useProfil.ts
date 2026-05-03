@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { createClient } from '@afroverse/supabase/client'
+import { supabase } from '../lib/supabase'
 import type { Profil } from '@afroverse/types'
 
 export function useProfil(userId: string | undefined) {
@@ -8,7 +8,6 @@ export function useProfil(userId: string | undefined) {
 
   useEffect(() => {
     if (!userId) { setLoading(false); return }
-    const supabase = createClient()
     supabase
       .from('profils')
       .select('*')

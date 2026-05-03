@@ -1,4 +1,4 @@
-import { useDiagnosticStore } from '../../../store/diagnosticStore'
+import { useDiagnosticStore } from '../../store/diagnosticStore'
 import StepTypeCheveux from './StepTypeCheveux'
 import StepPorosite from './StepPorosite'
 import StepObjectifs from './StepObjectifs'

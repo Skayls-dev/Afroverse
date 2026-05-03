@@ -1,4 +1,18 @@
+import './globals.css'
 import type { Metadata } from 'next'
+import { Manrope, Space_Grotesk } from 'next/font/google'
+
+const headingFont = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap'
+})
+
+const bodyFont = Manrope({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: 'AfroVerse — Le diagnostic capillaire pour cheveux afro-texturés',
@@ -15,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body className={`${headingFont.variable} ${bodyFont.variable}`}>{children}</body>
     </html>
   )
 }

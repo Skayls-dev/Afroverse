@@ -1,5 +1,5 @@
 import type { TypeCheveux } from '@afroverse/types'
-import { useDiagnosticStore } from '../../../store/diagnosticStore'
+import { useDiagnosticStore } from '../../store/diagnosticStore'
 
 const types: { value: TypeCheveux; label: string; desc: string }[] = [
   { value: '3A', label: '3A', desc: 'Boucles larges et définies' },

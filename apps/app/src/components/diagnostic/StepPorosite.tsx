@@ -1,5 +1,5 @@
 import type { Porosite } from '@afroverse/types'
-import { useDiagnosticStore } from '../../../store/diagnosticStore'
+import { useDiagnosticStore } from '../../store/diagnosticStore'
 
 const porosites: { value: Porosite; label: string; desc: string }[] = [
   { value: 'faible', label: 'Faible', desc: 'Tes cheveux mettent longtemps à absorber l\'eau' },

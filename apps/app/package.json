@@ -1,33 +1,36 @@
-﻿{
-    "name":  "app",
-    "version":  "0.1.0",
-    "private":  true,
-    "scripts":  {
-                    "dev":  "vite --port 5173",
-                    "build":  "tsc \u0026\u0026 vite build",
-                    "preview":  "vite preview",
-                    "lint":  "eslint .",
-                    "typecheck":  "tsc --noEmit"
-                },
-    "dependencies":  {
-                         "react":  "18.x",
-                         "react-dom":  "18.x",
-                         "react-router-dom":  "6.x",
-                         "@afroverse/types":  "workspace:*",
-                         "@afroverse/supabase":  "workspace:*",
-                         "zustand":  "latest",
-                         "tailwindcss":  "3.x",
-                         "lucide-react":  "latest",
-                         "react-hook-form":  "latest",
-                         "zod":  "latest",
-                         "@hookform/resolvers":  "latest"
-                     },
-    "devDependencies":  {
-                            "vite":  "^5.4.0",
-                            "@vitejs/plugin-react":  "^4.3.0",
-                            "vite-plugin-pwa":  "latest",
-                            "@types/react":  "^18.0.0",
-                            "@types/react-dom":  "^18.0.0",
-                            "typescript":  "5.x"
-                        }
+{
+    "name": "app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "vite --port 5173",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "lint": "eslint .",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@afroverse/supabase": "workspace:*",
+        "@afroverse/types": "workspace:*",
+        "@hookform/resolvers": "latest",
+        "@supabase/supabase-js": "^2.105.1",
+        "lucide-react": "latest",
+        "react": "18.x",
+        "react-dom": "18.x",
+        "react-hook-form": "latest",
+        "react-router-dom": "6.x",
+        "tailwindcss": "3.x",
+        "zod": "latest",
+        "zustand": "latest"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0",
+        "@vitejs/plugin-react": "^4.3.0",
+        "autoprefixer": "^10.5.0",
+        "postcss": "^8.5.13",
+        "typescript": "5.x",
+        "vite": "^5.4.0",
+        "vite-plugin-pwa": "latest"
+    }
 }

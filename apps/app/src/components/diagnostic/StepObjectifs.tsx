@@ -1,4 +1,4 @@
-import { useDiagnosticStore } from '../../../store/diagnosticStore'
+import { useDiagnosticStore } from '../../store/diagnosticStore'
 
 const objectifsDisponibles = [
   'Hydrater mes cheveux',
