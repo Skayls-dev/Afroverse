@@ -1,29 +1,42 @@
+import { useState, useEffect } from 'react'
 import Navbar from '../components/shared/Navbar'
 import DiagnosticStepper from '../components/diagnostic/DiagnosticStepper'
+import DiagnosticResultComponent from '../components/diagnostic/DiagnosticResult'
+import ShareCard from '../components/diagnostic/ShareCard'
 import { useDiagnosticStore } from '../store/diagnosticStore'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
 import { useNavigate } from 'react-router-dom'
+import { computeDiagnosticResult, type DiagnosticResult } from '../lib/scoring'
 
 export default function Diagnostic() {
   const { data, step, reset } = useDiagnosticStore()
   const { user } = useAuth()
   const navigate = useNavigate()
-  const TOTAL_STEPS = 3 // TODO: augmenter à 6 une fois tous les steps implémentés
+  const TOTAL_STEPS = 6
+  const [result, setResult] = useState<DiagnosticResult | null>(null)
+  const [shareOpen, setShareOpen] = useState(false)
+
+  useEffect(() => {
+    if (step >= TOTAL_STEPS && data.type_cheveux) {
+      setResult(computeDiagnosticResult(data))
+    }
+  }, [step, data])
 
   const handleSubmit = async () => {
-    if (!user) return
+    if (!user || !result) return
     const { error } = await supabase.from('profils').upsert({
       id: user.id,
       email: user.email,
       ...data,
+      porosite_calculee: data.porosite,
+      priorite_absolue: result.prioriteAbsolue,
       updated_at: new Date().toISOString(),
     })
     if (!error) {
       reset()
       navigate('/recommandations')
     }
-    // TODO: gérer l'erreur UI
   }
 
   return (
@@ -32,19 +45,22 @@ export default function Diagnostic() {
         <h1 className="text-2xl font-bold text-white mb-6">Ton diagnostic capillaire</h1>
         {step < TOTAL_STEPS ? (
           <DiagnosticStepper />
-        ) : (
-          <div className="text-center space-y-4">
-            <p className="text-[#1D9E75] text-xl font-semibold">Diagnostic complété ! ✓</p>
-            <button
-              onClick={handleSubmit}
-              className="bg-[#1D9E75] hover:bg-[#178864] text-white font-semibold py-3 px-8 rounded-full transition-colors"
-            >
-              Voir mes recommandations
-            </button>
-          </div>
-        )}
+        ) : result ? (
+          <DiagnosticResultComponent
+            result={result}
+            onShare={() => setShareOpen(true)}
+            onViewRecommendations={handleSubmit}
+          />
+        ) : null}
       </div>
       <Navbar />
+      {result && (
+        <ShareCard
+          result={result}
+          isOpen={shareOpen}
+          onClose={() => setShareOpen(false)}
+        />
+      )}
     </div>
   )
 }
