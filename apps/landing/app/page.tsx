@@ -20,6 +20,7 @@ export default function Home() {
           </a>
           <nav className="topbar-nav">
             <a href="#plan" className="topbar-link">Comment ca marche</a>
+            <a href="/packs" className="topbar-link">Nos packs</a>
             <a href={appUrl} className="btn btn-primary">Demarrer mon diagnostic</a>
           </nav>
         </header>
@@ -81,7 +82,7 @@ export default function Home() {
         </section>
 
         <section className="section guide-section">
-          <h2 className="section-title">AfroVerse a ete cree pour ca.</h2>
+          <h2 className="section-title">AfroVerse &mdash; ta r&eacute;f&eacute;rence cosm&eacute;tique afro</h2>
           <p className="section-lead">
             On sait ce que c\'est - passer des heures a chercher, essayer, decevoir. La cosmetique afro est riche,
             diverse, puissante. Mais elle demande une approche sur mesure. AfroVerse transforme ton profil unique
@@ -90,19 +91,25 @@ export default function Home() {
           <div className="proof-grid">
             <article className="proof-card">
               <Leaf size={20} aria-hidden="true" />
-              <h3>Base sur des donnees reelles</h3>
-              <p>12 000+ profils analyses</p>
+              <h3>6 crit&egrave;res de matching</h3>
+              <p>Porosit&eacute;, texture, densit&eacute;, &eacute;lasticit&eacute;, objectifs, probl&egrave;mes</p>
             </article>
             <article className="proof-card">
               <Target size={20} aria-hidden="true" />
-              <h3>Cheveux ET peau</h3>
-              <p>Une approche beaute complete, pas juste capillaire</p>
+              <h3>15 profils capillaires</h3>
+              <p>De 3A &agrave; 4C avec sous-types — chaque texture reconnue</p>
             </article>
             <article className="proof-card">
               <Zap size={20} aria-hidden="true" />
-              <h3>2 minutes chrono</h3>
-              <p>Resultats immediats, sans jargon</p>
+              <h3>Donn&eacute;es first-party</h3>
+              <p>Aucun algo tiers, tout calcul&eacute; sur ton profil r&eacute;el</p>
             </article>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '1.5rem', padding: '1rem', background: 'var(--color-surface-2)', borderRadius: '12px', border: '1px solid var(--color-border)' }}>
+            <Image src="/logoAfroverse.png" alt="AfroVerse" width={120} height={36} style={{ objectFit: 'contain' }} />
+            <p style={{ color: 'var(--color-text-muted)', fontSize: '0.92rem', fontWeight: 700 }}>
+              Con&ccedil;u par des passionn&eacute;s de beaut&eacute; afro
+            </p>
           </div>
         </section>
 
@@ -179,23 +186,47 @@ export default function Home() {
         </section>
 
         <section className="section fail-section">
-          <h2 className="section-title">Sans routine adaptee, rien ne change.</h2>
-          <p className="section-lead">
+          <h2 className="section-title">Sans routine adapt&eacute;e, rien ne change.</h2>
+          <p className="section-lead" style={{ marginBottom: '1.5rem' }}>
             Chaque mois sans plan personnalise, c&apos;est encore de l&apos;argent gaspille sur des produits qui ne conviennent pas.
-            C&apos;est encore des cheveux qui cassent, une peau qui terne, une confiance qui s&apos;effrite. AfroVerse t&apos;aide a arreter ce cycle.
           </p>
+          <div style={{ display: 'grid', gap: '0.875rem' }}>
+            {[
+              { emoji: '💸', text: 'Des centaines d\'euros gaspill\u00e9s en produits inad\u00e9quats' },
+              { emoji: '⏳', text: 'Des ann\u00e9es \u00e0 chercher sans trouver ce qui marche vraiment' },
+              { emoji: '😓', text: 'Une routine copi\u00e9e d\'internet qui ab\u00eeme plus qu\'elle ne r\u00e9pare' },
+            ].map((item) => (
+              <div
+                key={item.emoji}
+                style={{
+                  borderLeft: '3px solid var(--color-primary)',
+                  background: 'var(--color-surface)',
+                  borderRadius: '0 12px 12px 0',
+                  padding: '1rem 1.25rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                }}
+              >
+                <span style={{ fontSize: '1.4rem', flexShrink: 0 }}>{item.emoji}</span>
+                <p style={{ color: 'var(--color-text)', fontWeight: 600, lineHeight: 1.5 }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="section success-section">
-          <h2 className="section-title">Imagine te regarder dans le miroir et te reconnaitre.</h2>
+          <h2 className="section-title">Avec AfroVerse, tu&hellip;</h2>
+          <p className="section-lead">Imagine te regarder dans le miroir et te reconnaître. C&apos;est possible.</p>
           <div className="grid-3">
             {[
-              '✨ Des cheveux hydrates, definis, en pleine sante',
-              '🌟 Une peau qui rayonne, enfin dans le bon programme',
-              '💪 Une routine que tu maitrises - sans te tromper de produit'
+              { icon: '✅', text: 'Re\u00e7ois un plan sur-mesure bas\u00e9 sur ta texture r\u00e9elle' },
+              { icon: '✅', text: 'Arr\u00eates de gaspiller — chaque produit recommand\u00e9 est compatible' },
+              { icon: '✅', text: 'Suis ton \u00e9volution mois apr\u00e8s mois avec des photos et des scores' },
             ].map((item) => (
-              <article key={item} className="result-card">
-                <p>{item}</p>
+              <article key={item.icon + item.text} className="result-card" style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                <span style={{ color: 'var(--color-secondary)', fontSize: '1.15rem', flexShrink: 0 }}>{item.icon}</span>
+                <p>{item.text}</p>
               </article>
             ))}
           </div>
@@ -207,6 +238,19 @@ export default function Home() {
             <footer>- Amara K., Brussels</footer>
           </blockquote>
         </section>
+
+        <div className="stats-box">
+          {[
+            { value: '12 000+', label: 'Profils analysés' },
+            { value: '6', label: 'Critères de matching' },
+            { value: '2 min', label: 'Pour ton diagnostic complet' },
+          ].map((s) => (
+            <div key={s.label} className="stat-card">
+              <p className="stat-value">{s.value}</p>
+              <p className="stat-label">{s.label}</p>
+            </div>
+          ))}
+        </div>
 
         <section className="cta-band">
           <h2 className="cta-title">Ton profil beaute afro t&apos;attend.</h2>

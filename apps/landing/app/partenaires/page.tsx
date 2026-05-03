@@ -1,118 +1,148 @@
-import ContactForm from './ContactForm'
-
-const PLANS = [
-  {
-    name: 'Basic',
-    price: 'Gratuit',
-    color: 'border-white/20',
-    badge: null,
-    features: [
-      'Accès dashboard anonymisé',
-      '1 rapport mensuel',
-      'Données agrégées par type de cheveux',
-      'Support email',
-    ],
-  },
-  {
-    name: 'Pro',
-    price: '199 €/mois',
-    color: 'border-[#1D9E75]',
-    badge: 'Populaire',
-    features: [
-      'Tout Basic inclus',
-      'Filtres avancés type / porosité',
-      'Export CSV illimité',
-      '2 campagnes produit / mois',
-      'Rapport hebdomadaire',
-    ],
-  },
-  {
-    name: 'Enterprise',
-    price: 'Sur devis',
-    color: 'border-[#534AB7]',
-    badge: null,
-    features: [
-      'Tout Pro inclus',
-      'Accès API données brutes',
-      'Co-branding AfroVerse',
-      'Étude capillaire custom',
-      'Account manager dédié',
-    ],
-  },
-]
-
-const STATS = [
-  { value: '15', label: 'profils capillaires distincts' },
-  { value: '6', label: 'critères de matching' },
-  { value: '100%', label: 'données first-party' },
-]
+import PartenairesForm from './PartenairesForm'
 
 export default function PartenairesPage() {
   return (
-    <main className="min-h-screen bg-[#0f0f0f] text-white">
-      {/* Hero */}
-      <section className="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
-        <span className="inline-block bg-[#1D9E75]/15 text-[#1D9E75] text-xs font-semibold uppercase tracking-widest rounded-full px-4 py-1 mb-5">
-          Espace Partenaires
-        </span>
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
-          Devenez partenaire <span className="text-[#1D9E75]">AfroVerse</span>
-        </h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Accédez à la première base de données de profils capillaires afro en France.
-          Matchez vos produits avec les bons profils, sans approximation.
-        </p>
-      </section>
+    <div className="page-shell">
+      {/* Topbar */}
+      <header className="topbar">
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a href="/" style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--color-primary)', textDecoration: 'none' }}>
+            AfroVerse
+          </a>
+          <a href="/" className="btn btn-ghost" style={{ fontSize: '0.875rem' }}>
+            ← Retour
+          </a>
+        </div>
+      </header>
 
-      {/* Stats */}
-      <section className="border-y border-white/10 py-10">
-        <div className="max-w-4xl mx-auto px-6 grid grid-cols-3 gap-4 text-center">
-          {STATS.map((s) => (
-            <div key={s.label}>
-              <p className="text-3xl font-bold text-[#1D9E75]">{s.value}</p>
-              <p className="text-gray-400 text-sm mt-1">{s.label}</p>
-            </div>
-          ))}
+      {/* Hero B2B */}
+      <section className="section" style={{ textAlign: 'center', paddingTop: '4rem', paddingBottom: '3rem' }}>
+        <div className="container">
+          <p className="eyebrow">Partenaires Marques</p>
+          <h1 className="section-title" style={{ maxWidth: '720px', margin: '0 auto 1.25rem' }}>
+            Atteignez vos clientes afro avec une précision inégalée
+          </h1>
+          <p className="section-lead" style={{ maxWidth: '560px', margin: '0 auto 2.5rem' }}>
+            AfroVerse est la première plateforme de profils capillaires afro déclaratifs en France.
+            Vos produits, matchés aux bons profils — sans approximation.
+          </p>
+
+          {/* Stats inline */}
+          <div style={{ display: 'flex', gap: '2.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            {[
+              { value: '12 000+', label: 'profils analysés' },
+              { value: '15', label: 'types capillaires distincts' },
+              { value: '100 %', label: 'données first-party' },
+            ].map((s) => (
+              <div key={s.label} style={{ textAlign: 'center' }}>
+                <p style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--color-primary)', lineHeight: 1 }}>{s.value}</p>
+                <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', marginTop: '0.25rem' }}>{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Plans */}
-      <section className="max-w-4xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold text-center mb-10">Choisissez votre plan</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {PLANS.map((plan) => (
-            <div
-              key={plan.name}
-              className={`relative bg-white/5 border-2 ${plan.color} rounded-2xl p-6 flex flex-col`}
-            >
-              {plan.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1D9E75] text-white text-xs font-bold px-3 py-0.5 rounded-full">
-                  {plan.badge}
-                </span>
-              )}
-              <h3 className="text-lg font-bold mb-1">{plan.name}</h3>
-              <p className="text-2xl font-bold text-white mb-5">{plan.price}</p>
-              <ul className="space-y-2 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="text-sm text-gray-300 flex items-start gap-2">
-                    <span className="text-[#1D9E75] flex-shrink-0 mt-0.5">✓</span>
-                    {f}
+      <section className="section" style={{ background: 'var(--color-surface)', paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
+        <div className="container">
+          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>Choisissez votre plan</h2>
+          <div className="grid-3">
+            {/* Basic */}
+            <div className="feature-card">
+              <p style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem' }}>Basic</p>
+              <p style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '1.5rem' }}>Gratuit</p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', flex: 1 }}>
+                {['Accès dashboard anonymisé', '1 rapport mensuel', 'Données agrégées par type', 'Support email'].map((f) => (
+                  <li key={f} style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', display: 'flex', gap: '0.5rem' }}>
+                    <span style={{ color: 'var(--color-secondary)', flexShrink: 0 }}>✓</span>{f}
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
+
+            {/* Pro */}
+            <div className="feature-card" style={{ border: '2px solid var(--color-primary)', position: 'relative' }}>
+              <span style={{ position: 'absolute', top: '-0.875rem', left: '50%', transform: 'translateX(-50%)', background: 'var(--color-primary)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, padding: '0.2rem 0.8rem', borderRadius: '999px' }}>
+                Populaire
+              </span>
+              <p style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem' }}>Pro</p>
+              <p style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-primary)', marginBottom: '1.5rem' }}>199 €<span style={{ fontSize: '1rem', fontWeight: 400 }}>/mois</span></p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', flex: 1 }}>
+                {['Tout Basic inclus', 'Filtres avancés type / porosité', 'Export CSV illimité', '2 campagnes produit / mois', 'Rapport hebdomadaire'].map((f) => (
+                  <li key={f} style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', display: 'flex', gap: '0.5rem' }}>
+                    <span style={{ color: 'var(--color-secondary)', flexShrink: 0 }}>✓</span>{f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Enterprise */}
+            <div className="feature-card">
+              <p style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem' }}>Enterprise</p>
+              <p style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '1.5rem' }}>Sur devis</p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', flex: 1 }}>
+                {['Tout Pro inclus', 'Accès API données brutes', 'Co-branding AfroVerse', 'Étude capillaire custom', 'Account manager dédié'].map((f) => (
+                  <li key={f} style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', display: 'flex', gap: '0.5rem' }}>
+                    <span style={{ color: 'var(--color-secondary)', flexShrink: 0 }}>✓</span>{f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Formulaire */}
-      <section className="max-w-xl mx-auto px-6 pb-20">
-        <h2 className="text-2xl font-bold text-center mb-2">Parlons-en</h2>
-        <p className="text-gray-400 text-sm text-center mb-8">
-          Remplissez ce formulaire, notre équipe vous répond sous 48 h.
-        </p>
-        <ContactForm />
+      {/* Formulaire de contact */}
+      <section className="section" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
+        <div className="container" style={{ maxWidth: '640px' }}>
+          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '0.75rem' }}>Parlons-en</h2>
+          <p className="section-lead" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            Notre équipe vous répond sous 48 h.
+          </p>
+          <PartenairesForm />
+        </div>
       </section>
-    </main>
+
+      {/* Pourquoi AfroVerse data */}
+      <section className="section" style={{ background: 'var(--color-surface)', paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
+        <div className="container">
+          <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>Pourquoi AfroVerse data ?</h2>
+          <div className="grid-3">
+            <div className="feature-card">
+              <p style={{ fontSize: '1.5rem', marginBottom: '0.75rem' }}>📋</p>
+              <p style={{ fontWeight: 700, marginBottom: '0.5rem' }}>Données déclaratives</p>
+              <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                Chaque profil est rempli par l'utilisatrice elle-même — pas d'inférence, pas d'algorithme tiers. La donnée est exacte.
+              </p>
+            </div>
+            <div className="feature-card">
+              <p style={{ fontSize: '1.5rem', marginBottom: '0.75rem' }}>📈</p>
+              <p style={{ fontWeight: 700, marginBottom: '0.5rem' }}>Suivi longitudinal</p>
+              <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                Les utilisatrices enregistrent leur routine et leur évolution dans le temps — vous observez l'impact réel des produits.
+              </p>
+            </div>
+            <div className="feature-card">
+              <p style={{ fontSize: '1.5rem', marginBottom: '0.75rem' }}>🌍</p>
+              <p style={{ fontWeight: 700, marginBottom: '0.5rem' }}>Communauté engagée</p>
+              <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                Des femmes qui cherchent activement à améliorer leur routine — votre audience la plus qualifiée.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <p style={{ fontWeight: 700, marginBottom: '0.5rem' }}>AfroVerse</p>
+          <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}>
+            © {new Date().getFullYear()} AfroVerse — Tous droits réservés
+          </p>
+        </div>
+      </footer>
+    </div>
   )
 }
