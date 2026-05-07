@@ -73,6 +73,7 @@ export default function PhotoCapture({ onPhotoSelected, onReset, className = '' 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [cameraStream, setCameraStream] = useState<MediaStream | null>(null)
   const [cameraError, setCameraError] = useState<string | null>(null)
+  const [facingMode, setFacingMode] = useState<'environment' | 'user'>('environment')
 
   function stopCameraStream() {
     if (!cameraStream) return
@@ -93,13 +94,34 @@ export default function PhotoCapture({ onPhotoSelected, onReset, className = '' 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: { ideal: 'environment' },
+          facingMode: { ideal: facingMode },
         },
         audio: false,
       })
       setCameraStream(stream)
     } catch {
       setCameraError('Impossible d\'ouvrir la camera. Verifie les permissions.')
+    }
+  }
+
+  async function flipCamera() {
+    const nextFacing = facingMode === 'environment' ? 'user' : 'environment'
+    setFacingMode(nextFacing)
+    // Stop current stream before reopening
+    if (cameraStream) {
+      for (const track of cameraStream.getTracks()) track.stop()
+      setCameraStream(null)
+    }
+    setCameraError(null)
+    if (!navigator.mediaDevices?.getUserMedia) return
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: nextFacing } },
+        audio: false,
+      })
+      setCameraStream(stream)
+    } catch {
+      setCameraError('Impossible de basculer la camera.')
     }
   }
 
@@ -242,12 +264,18 @@ export default function PhotoCapture({ onPhotoSelected, onReset, className = '' 
               <div className="flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => {
-                    void captureFromCamera()
-                  }}
+                  onClick={() => { void captureFromCamera() }}
                   className="rounded-xl bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white"
                 >
                   Capturer
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { void flipCamera() }}
+                  className="rounded-xl border border-[var(--color-border)] px-4 py-2 text-sm text-[var(--color-text)]"
+                  title={facingMode === 'environment' ? 'Passer en camera frontale' : 'Passer en camera arriere'}
+                >
+                  🔄 {facingMode === 'environment' ? 'Selfie' : 'Arrière'}
                 </button>
                 <button
                   type="button"
