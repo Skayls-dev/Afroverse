@@ -13,6 +13,9 @@ export interface Profil {
   densite: Densite
   objectifs: string[]
   problemes: string[]
+  photo_diagnostic_url?: string | null
+  diagnostic_ia?: Record<string, unknown> | null
+  diagnostic_ia_at?: string | null
   created_at: string
   updated_at: string
 }
@@ -22,6 +25,11 @@ export interface Suivi {
   user_id: string
   mois: string
   photo_url?: string
+  analyse_ia?: {
+    priorite?: string
+    conseil_cle?: string
+    [key: string]: unknown
+  } | null
   score_hydratation: number
   score_brillance: number
   score_casse: number
@@ -34,6 +42,7 @@ export interface Produit {
   nom: string
   marque: string
   categorie: string
+  photo_urls?: string[]
   types_compatibles: TypeCheveux[]
   porosites_compatibles: Porosite[]
   ingredients: string[]

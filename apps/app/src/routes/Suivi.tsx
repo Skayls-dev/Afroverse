@@ -1,8 +1,13 @@
-import { useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Navbar from '../components/shared/Navbar'
 import { useAuth } from '../hooks/useAuth'
 import { useSuivi } from '../hooks/useSuivi'
 import { supabase } from '../lib/supabase'
+import {
+  useAnthropicDiagnostic,
+  type DiagnosticIAInput,
+  type DiagnosticIAResult,
+} from '../hooks/useAnthropicDiagnostic'
 
 function SliderField({
   label,
@@ -36,6 +41,7 @@ function SliderField({
 export default function Suivi() {
   const { user } = useAuth()
   const { suivis, loading, setSuivis } = useSuivi(user?.id)
+  const { analyze, loading: iaLoading, error: iaError } = useAnthropicDiagnostic()
 
   const [modalOpen, setModalOpen] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -44,6 +50,11 @@ export default function Suivi() {
   const [casse, setCasse] = useState(5)
   const [notes, setNotes] = useState('')
   const [photo, setPhoto] = useState<File | null>(null)
+  const [iaEnabled, setIaEnabled] = useState(false)
+  const [iaResult, setIaResult] = useState<DiagnosticIAResult | null>(null)
+  const [iaLocalError, setIaLocalError] = useState<string | null>(null)
+  const [lastAnalyzedPhotoKey, setLastAnalyzedPhotoKey] = useState<string | null>(null)
+  const [expandedIaId, setExpandedIaId] = useState<string | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
   const currentMois = new Date().toISOString().slice(0, 7) + '-01'
@@ -54,8 +65,91 @@ export default function Suivi() {
     setCasse(5)
     setNotes('')
     setPhoto(null)
+    setIaEnabled(false)
+    setIaResult(null)
+    setIaLocalError(null)
+    setLastAnalyzedPhotoKey(null)
     setModalOpen(true)
   }
+
+  async function fileToBase64WithoutPrefix(file: File): Promise<string> {
+    const reader = new FileReader()
+    return new Promise((resolve, reject) => {
+      reader.onload = () => {
+        const value = String(reader.result || '')
+        const commaIndex = value.indexOf(',')
+        resolve(commaIndex >= 0 ? value.slice(commaIndex + 1) : value)
+      }
+      reader.onerror = () => reject(reader.error)
+      reader.readAsDataURL(file)
+    })
+  }
+
+  function buildQuestionnaireFromProfil(profil: Record<string, unknown>): DiagnosticIAInput {
+    const type = String(profil.type_cheveux || '')
+    const porosite = String(profil.porosite || '')
+    const densite = String(profil.densite || '')
+    const problemes = (profil.problemes as string[] | undefined) ?? []
+    const objectifs = (profil.objectifs as string[] | undefined) ?? []
+
+    const forme = type.startsWith('4')
+      ? 'Crepus'
+      : type === '3C'
+      ? 'Frises'
+      : type
+      ? 'Boucles'
+      : 'Je ne sais pas'
+
+    const epaisseur = densite === 'fine' ? 'Fin' : densite === 'epaisse' ? 'Epais' : 'Normal'
+    const eau = porosite === 'haute'
+      ? 'Penetre tres vite'
+      : porosite === 'faible'
+      ? 'Reste en surface'
+      : 'Met du temps'
+
+    return {
+      forme,
+      epaisseur,
+      eau,
+      casse: problemes.includes('casse') ? 'Oui beaucoup' : 'Un peu',
+      secheresse: problemes.includes('secheresse') ? 'Tres souvent' : 'Parfois',
+      routine: 'Pas toujours',
+      objectif: objectifs[0] || '',
+    }
+  }
+
+  async function runIaAnalysis(file: File) {
+    if (!user) return
+
+    setIaLocalError(null)
+    try {
+      const { data: profil, error: profilError } = await supabase
+        .from('profils')
+        .select('type_cheveux, porosite, elasticite, densite, objectifs, problemes')
+        .eq('id', user.id)
+        .single()
+
+      if (profilError || !profil) {
+        throw new Error('Profil requis pour analyse IA indisponible')
+      }
+
+      const questionnaire = buildQuestionnaireFromProfil(profil)
+      const base64 = await fileToBase64WithoutPrefix(file)
+      const analyzed = await analyze(base64, questionnaire)
+      setIaResult(analyzed)
+      setLastAnalyzedPhotoKey(`${file.name}-${file.size}-${file.lastModified}`)
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Erreur pendant analyse IA'
+      setIaLocalError(message)
+    }
+  }
+
+  useEffect(() => {
+    if (!modalOpen || !iaEnabled || !photo) return
+    const key = `${photo.name}-${photo.size}-${photo.lastModified}`
+    if (key === lastAnalyzedPhotoKey) return
+    void runIaAnalysis(photo)
+  }, [modalOpen, iaEnabled, photo, lastAnalyzedPhotoKey])
 
   async function handleSave() {
     if (!user) return
@@ -86,6 +180,7 @@ export default function Suivi() {
           score_casse: casse,
           notes: notes.trim() || null,
           photo_url: photo_url ?? null,
+          analyse_ia: iaEnabled && iaResult ? iaResult : null,
         })
         .select()
         .single()
@@ -131,6 +226,15 @@ export default function Suivi() {
                   <div className="text-sm app-muted">
                     {new Date(s.mois).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}
                   </div>
+                  {s.analyse_ia ? (
+                    <button
+                      type="button"
+                      onClick={() => setExpandedIaId(expandedIaId === s.id ? null : s.id)}
+                      className="ml-auto rounded-full border border-[var(--color-secondary)]/40 bg-[var(--color-secondary)]/10 px-2 py-0.5 text-[10px] font-semibold text-[var(--color-secondary)]"
+                    >
+                      ✦ IA
+                    </button>
+                  ) : null}
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div>
@@ -147,6 +251,16 @@ export default function Suivi() {
                   </div>
                 </div>
                 {s.notes && <p className="app-muted text-sm mt-2">{s.notes}</p>}
+                {s.analyse_ia && expandedIaId === s.id ? (
+                  <div className="mt-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-3 text-xs">
+                    <p className="font-semibold text-[var(--color-text)]">
+                      Priorite: {String(s.analyse_ia.priorite ?? 'Non definie')}
+                    </p>
+                    <p className="mt-1 app-muted">
+                      {String(s.analyse_ia.conseil_cle ?? 'Aucun conseil IA disponible')}
+                    </p>
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>
@@ -224,6 +338,35 @@ export default function Suivi() {
               >
                 {photo ? photo.name : '📷 Ajouter une photo'}
               </button>
+            </div>
+
+            <div className="mb-6 rounded-xl border border-[var(--color-border)] p-3">
+              <button
+                type="button"
+                disabled={!photo}
+                onClick={() => {
+                  setIaEnabled((v) => !v)
+                  setIaResult(null)
+                  setIaLocalError(null)
+                  setLastAnalyzedPhotoKey(null)
+                }}
+                className="w-full rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm text-[var(--color-text)] transition-colors hover:border-[var(--color-primary)] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {iaEnabled ? 'Analyse IA activée 🤖' : 'Analyser avec l\'IA 🤖'}
+              </button>
+
+              {!photo ? <p className="mt-2 text-xs app-muted">Ajoute une photo pour activer l'analyse IA.</p> : null}
+              {iaEnabled && iaLoading ? <p className="mt-2 text-xs text-[var(--color-secondary)]">L'IA examine la photo...</p> : null}
+              {iaEnabled && (iaError || iaLocalError) ? (
+                <p className="mt-2 text-xs text-red-600">{iaError || iaLocalError}</p>
+              ) : null}
+
+              {iaEnabled && iaResult ? (
+                <div className="mt-3 rounded-lg border border-[var(--color-secondary)]/35 bg-[var(--color-secondary)]/10 p-3 text-xs">
+                  <p className="font-semibold text-[var(--color-text)]">Priorité IA: {iaResult.priorite}</p>
+                  <p className="mt-1 app-muted">{iaResult.conseil_cle}</p>
+                </div>
+              ) : null}
             </div>
 
             <button

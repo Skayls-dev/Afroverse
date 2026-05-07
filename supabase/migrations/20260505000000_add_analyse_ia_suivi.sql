@@ -1,0 +1,2 @@
+ALTER TABLE suivis
+  ADD COLUMN IF NOT EXISTS analyse_ia JSONB;
