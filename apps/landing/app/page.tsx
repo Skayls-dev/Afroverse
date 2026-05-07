@@ -20,6 +20,7 @@ export default function Home() {
           </div>
           <nav className="topbar-nav">
             <a href="#plan" className="topbar-link">Comment ca marche</a>
+            <a href="/routines" className="topbar-link">Routines</a>
             <a href="/packs" className="topbar-link">Nos packs</a>
             <a href={appUrl} className="btn btn-primary">Demarrer mon diagnostic</a>
           </nav>
@@ -39,6 +40,7 @@ export default function Home() {
             </p>
             <div className="actions">
               <a href={appUrl} className="btn btn-primary">Demarrer mon diagnostic gratuit -&gt;</a>
+              <a href="/routines" className="btn btn-routines">Voir les routines par type</a>
               <a href="#plan" className="btn btn-ghost">Voir comment ca marche</a>
             </div>
           </div>
@@ -51,6 +53,20 @@ export default function Home() {
           </div>
         </div>
         </div>
+
+        <section className="section routines-teaser">
+          <div className="routines-teaser-content">
+            <p className="eyebrow">Nouveau</p>
+            <h2 className="section-title">Routines generales par type de cheveux</h2>
+            <p className="section-lead">
+              Tu veux un plan simple avant ton diagnostic complet ? Explore des routines visuelles 3A a 4C,
+              avec les bons gestes, dans le bon ordre.
+            </p>
+          </div>
+          <div className="routines-teaser-cta">
+            <a href="/routines" className="btn btn-routines">Explorer les routines -&gt;</a>
+          </div>
+        </section>
 
         <section className="section">
           <h2 className="section-title">Tu merites mieux que des conseils qui ne te ressemblent pas.</h2>

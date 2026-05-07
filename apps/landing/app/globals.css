@@ -262,6 +262,17 @@ a {
   background: rgba(232, 101, 26, 0.08);
 }
 
+.btn-routines {
+  border-color: var(--color-secondary);
+  background: rgba(29, 158, 117, 0.1);
+  color: var(--color-secondary);
+}
+
+.btn-routines:hover {
+  border-color: var(--color-secondary);
+  background: rgba(29, 158, 117, 0.2);
+}
+
 .panel {
   border-radius: 16px;
   border: 1px solid var(--color-border);
@@ -355,6 +366,177 @@ a {
   background: var(--color-surface);
   box-shadow: 0 4px 20px rgba(232, 101, 26, 0.1);
   padding: 1.25rem;
+}
+
+.routines-teaser {
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(120deg, var(--color-surface), #fff8ea 56%, rgba(29, 158, 117, 0.12));
+  box-shadow: 0 4px 20px rgba(232, 101, 26, 0.1);
+  padding: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.routines-teaser-content {
+  flex: 1;
+  min-width: 220px;
+}
+
+.routines-teaser-cta {
+  flex-shrink: 0;
+}
+
+.routines-shell {
+  padding-bottom: 3rem;
+}
+
+.routines-hero {
+  margin-bottom: 2rem;
+}
+
+.routine-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.15rem 0.55rem;
+  background: rgba(29, 158, 117, 0.12);
+}
+
+.routine-chip-lg {
+  font-size: 1.15rem;
+  padding: 0.3rem 0.9rem;
+  min-width: 3.2rem;
+}
+
+.routine-type-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.routine-type-section {
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(160deg, var(--color-surface), #fff8ea 58%, rgba(245, 200, 66, 0.1));
+  box-shadow: 0 6px 22px rgba(29, 158, 117, 0.08);
+  padding: 1.25rem;
+}
+
+.routine-type-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.routine-type-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.routine-type-count {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin: 0.15rem 0 0;
+}
+
+.routine-empty {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+}
+
+.routine-steps-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.routine-etape-card {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: #fffdf9;
+  padding: 0.9rem;
+}
+
+.routine-etape-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.routine-etape-emoji {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.routine-etape-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.routine-frequence-chip {
+  background: rgba(29, 158, 117, 0.12);
+  border: 1px solid rgba(29, 158, 117, 0.28);
+  color: var(--color-secondary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+}
+
+.routine-duree {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.routine-step-title {
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
+
+.routine-step-desc {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.routine-etape-quand {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.routine-etape-quand-label {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.routines-cta-band {
+  margin-bottom: 1rem;
 }
 
 .profile-preview-section {
@@ -730,6 +912,7 @@ a {
   }
 
   .actions .btn,
+  .routines-teaser .btn,
   .section-cta-center .btn,
   .cta-band .btn {
     width: 100%;
@@ -770,6 +953,10 @@ a {
 
   .proof-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .routine-steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .stats-box {
