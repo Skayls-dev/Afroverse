@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import Image from 'next/image'
 import type { EtapeRoutine, TypeCheveux } from '@alwaysafro/types'
 import RoutinesTabs from './RoutinesTabs'
 import DownloadGuideForm from './DownloadGuideForm'
@@ -48,10 +49,18 @@ export default async function RoutinesPage() {
     <main className="page-shell routines-shell">
       <div className="container">
         <header className="topbar">
-          <a href="/" className="brand-link">
-            <span className="topbar-link">← Retour accueil</span>
-          </a>
+          <div className="brand">
+            <Image
+              src="/logoAfroverse.png"
+              alt="AlwaysAfro"
+              width={180}
+              height={55}
+              priority
+              className="brand-logo"
+            />
+          </div>
           <nav className="topbar-nav">
+            <a href="/" className="topbar-link">← Accueil</a>
             <a href="/packs" className="topbar-link">Nos packs</a>
             <a href={appUrl} className="btn btn-primary">Demarrer mon diagnostic</a>
           </nav>
