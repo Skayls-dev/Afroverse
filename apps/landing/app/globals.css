@@ -539,6 +539,62 @@ a {
   margin-bottom: 1rem;
 }
 
+.routines-tabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1.25rem;
+  scrollbar-width: none;
+}
+
+.routines-tabs-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.routines-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.routines-tab-btn:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.routines-tab-btn--active {
+  background: rgba(29, 158, 117, 0.14);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.routines-tab-count {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(29, 158, 117, 0.15);
+  border-radius: 999px;
+  padding: 0.05rem 0.4rem;
+}
+
+.routines-tab-btn--active .routines-tab-count {
+  background: rgba(29, 158, 117, 0.28);
+}
+
+.routine-tab-panel {
+  margin-bottom: 2.5rem;
+}
+
 .profile-preview-section {
   display: block;
 }

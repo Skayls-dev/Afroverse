@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import type { EtapeRoutine, TypeCheveux } from '@alwaysafro/types'
+import RoutinesTabs from './RoutinesTabs'
 
 export const dynamic = 'force-dynamic'
 
@@ -59,49 +60,7 @@ export default async function RoutinesPage() {
           </p>
         </section>
 
-        <div className="routine-type-sections">
-          {TYPES.map((type) => {
-            const etapes = etapesParType[type]
-            return (
-              <section key={type} className="routine-type-section">
-                <div className="routine-type-header">
-                  <span className="routine-chip routine-chip-lg">{type}</span>
-                  <div>
-                    <h2 className="routine-type-title">Type {type}</h2>
-                    <p className="routine-type-count">{etapes.length} etape{etapes.length !== 1 ? 's' : ''}</p>
-                  </div>
-                </div>
-
-                {etapes.length === 0 ? (
-                  <p className="routine-empty">Aucune etape disponible pour ce type pour le moment.</p>
-                ) : (
-                  <div className="routine-steps-grid">
-                    {etapes.map((etape) => (
-                      <article key={etape.id} className="routine-etape-card">
-                        <div className="routine-etape-head">
-                          <span className="routine-etape-emoji">{etape.emoji}</span>
-                          <div className="routine-etape-meta-row">
-                            <span className="routine-frequence-chip">{etape.frequence}</span>
-                            {etape.duree_minutes && (
-                              <span className="routine-duree">~{etape.duree_minutes} min</span>
-                            )}
-                          </div>
-                        </div>
-                        <h3 className="routine-step-title">{etape.titre}</h3>
-                        <p className="routine-step-desc">{etape.description}</p>
-                        {etape.quand && (
-                          <p className="routine-etape-quand">
-                            <span className="routine-etape-quand-label">Quand : </span>{etape.quand}
-                          </p>
-                        )}
-                      </article>
-                    ))}
-                  </div>
-                )}
-              </section>
-            )
-          })}
-        </div>
+        <RoutinesTabs etapesParType={etapesParType} />
 
         <section className="cta-band routines-cta-band">
           <h2 className="cta-title">Passe du general au sur-mesure</h2>
