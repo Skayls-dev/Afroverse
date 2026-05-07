@@ -40,11 +40,13 @@ export default function Diagnostic() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] pb-20 md:pt-16">
+    <div className="app-shell pb-20 md:pt-16">
       <div className="max-w-lg mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-white mb-6">Ton diagnostic capillaire</h1>
+        <h1 className="text-2xl font-bold text-[var(--color-text)] mb-6">Ton diagnostic capillaire</h1>
         {step < TOTAL_STEPS ? (
-          <DiagnosticStepper />
+          <div className="rounded-2xl p-4 border border-[var(--color-border)] bg-[#1a1a1a]">
+            <DiagnosticStepper />
+          </div>
         ) : result ? (
           <DiagnosticResultComponent
             result={result}

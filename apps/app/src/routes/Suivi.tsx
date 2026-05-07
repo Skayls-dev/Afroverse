@@ -18,7 +18,7 @@ function SliderField({
   return (
     <div className="mb-4">
       <div className="flex justify-between mb-1">
-        <span className="text-sm text-gray-300">{label}</span>
+        <span className="text-sm app-muted">{label}</span>
         <span className="text-sm font-bold" style={{ color }}>{value}/10</span>
       </div>
       <input
@@ -100,18 +100,18 @@ export default function Suivi() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] pb-20 md:pt-16">
+    <div className="app-shell pb-20 md:pt-16">
       <div className="max-w-lg mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-white mb-6">Suivi mensuel</h1>
+        <h1 className="text-2xl font-bold text-[var(--color-text)] mb-6">Suivi mensuel</h1>
 
         {loading ? (
-          <p className="text-gray-400">Chargement…</p>
+          <p className="app-muted">Chargement…</p>
         ) : suivis.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-400 mb-6">Aucun suivi enregistré pour l&apos;instant.</p>
+            <p className="app-muted mb-6">Aucun suivi enregistré pour l&apos;instant.</p>
             <button
               onClick={openModal}
-              className="bg-[#1D9E75] hover:bg-[#178864] text-white font-semibold py-3 px-8 rounded-full transition-colors"
+              className="app-btn-primary font-semibold py-3 px-8 rounded-full transition-colors"
             >
               Ajouter mon premier suivi
             </button>
@@ -119,7 +119,7 @@ export default function Suivi() {
         ) : (
           <div className="space-y-4">
             {suivis.map((s) => (
-              <div key={s.id} className="bg-white/5 rounded-xl p-4 border border-white/10">
+              <div key={s.id} className="app-card p-4">
                 <div className="flex items-center gap-3 mb-3">
                   {s.photo_url && (
                     <img
@@ -128,25 +128,25 @@ export default function Suivi() {
                       className="w-12 h-12 rounded-lg object-cover flex-shrink-0"
                     />
                   )}
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm app-muted">
                     {new Date(s.mois).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div>
                     <div className="text-2xl font-bold text-[#1D9E75]">{s.score_hydratation}/10</div>
-                    <div className="text-xs text-gray-500">Hydratation</div>
+                    <div className="text-xs app-muted">Hydratation</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-[#534AB7]">{s.score_brillance}/10</div>
-                    <div className="text-xs text-gray-500">Brillance</div>
+                    <div className="text-xs app-muted">Brillance</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-yellow-400">{s.score_casse}/10</div>
-                    <div className="text-xs text-gray-500">Casse</div>
+                    <div className="text-xs app-muted">Casse</div>
                   </div>
                 </div>
-                {s.notes && <p className="text-gray-400 text-sm mt-2">{s.notes}</p>}
+                {s.notes && <p className="app-muted text-sm mt-2">{s.notes}</p>}
               </div>
             ))}
           </div>
@@ -157,7 +157,7 @@ export default function Suivi() {
       {suivis.length > 0 && (
         <button
           onClick={openModal}
-          className="fixed bottom-20 right-5 w-14 h-14 bg-[#1D9E75] hover:bg-[#178864] text-white rounded-full shadow-lg text-2xl flex items-center justify-center transition-colors z-10"
+          className="fixed bottom-20 right-5 w-14 h-14 app-btn-primary rounded-full shadow-lg text-2xl flex items-center justify-center transition-colors z-10"
           aria-label="Ajouter un suivi"
         >
           +
@@ -171,9 +171,9 @@ export default function Suivi() {
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setModalOpen(false)}
           />
-          <div className="relative bg-[#181818] rounded-t-2xl w-full max-w-lg px-6 pt-6 pb-8 border-t border-white/10 max-h-[90vh] overflow-y-auto">
-            <div className="w-10 h-1 bg-white/20 rounded-full mx-auto mb-5" />
-            <h2 className="text-lg font-bold text-white mb-5">
+          <div className="relative bg-[var(--color-surface)] rounded-t-2xl w-full max-w-lg px-6 pt-6 pb-8 border-t border-[var(--color-border)] max-h-[90vh] overflow-y-auto">
+            <div className="w-10 h-1 bg-[var(--color-border)] rounded-full mx-auto mb-5" />
+            <h2 className="text-lg font-bold text-[var(--color-text)] mb-5">
               Suivi —{' '}
               {new Date(currentMois).toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}
             </h2>
@@ -198,18 +198,18 @@ export default function Suivi() {
             />
 
             <div className="mb-4">
-              <label className="text-sm text-gray-300 mb-1 block">Notes (optionnel)</label>
+              <label className="text-sm app-muted mb-1 block">Notes (optionnel)</label>
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 rows={3}
                 placeholder="Mes observations ce mois-ci…"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white text-sm resize-none focus:outline-none focus:border-[#1D9E75]"
+                className="w-full bg-[var(--color-bg)] border border-[var(--color-border)] rounded-xl px-3 py-2 text-[var(--color-text)] text-sm resize-none focus:outline-none focus:border-[var(--color-secondary)]"
               />
             </div>
 
             <div className="mb-6">
-              <label className="text-sm text-gray-300 mb-1 block">Photo (optionnel)</label>
+              <label className="text-sm app-muted mb-1 block">Photo (optionnel)</label>
               <input
                 ref={fileRef}
                 type="file"
@@ -220,7 +220,7 @@ export default function Suivi() {
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
-                className="w-full border border-dashed border-white/20 hover:border-[#1D9E75]/60 rounded-xl py-3 text-sm text-gray-400 transition-colors"
+                className="w-full border border-dashed border-[var(--color-border)] hover:border-[var(--color-secondary)]/60 rounded-xl py-3 text-sm app-muted transition-colors"
               >
                 {photo ? photo.name : '📷 Ajouter une photo'}
               </button>
@@ -229,7 +229,7 @@ export default function Suivi() {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="w-full bg-[#1D9E75] hover:bg-[#178864] disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition-colors"
+              className="w-full app-btn-primary disabled:opacity-50 font-semibold py-3 rounded-xl transition-colors"
             >
               {saving ? 'Enregistrement…' : 'Enregistrer'}
             </button>

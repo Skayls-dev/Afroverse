@@ -21,37 +21,37 @@ export default function Profil() {
     }))
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] pb-20 md:pt-16">
+    <div className="app-shell pb-20 md:pt-16">
       <div className="max-w-lg mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-white mb-6">Mon profil</h1>
+        <h1 className="text-2xl font-bold text-[var(--color-text)] mb-6">Mon profil</h1>
         {loading ? (
-          <p className="text-gray-400">Chargement…</p>
+          <p className="app-muted">Chargement…</p>
         ) : (
           <div className="space-y-4">
-            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-              <p className="text-gray-400 text-sm">Email</p>
-              <p className="text-white">{user?.email}</p>
+            <div className="app-card p-4">
+              <p className="app-muted text-sm">Email</p>
+              <p className="text-[var(--color-text)]">{user?.email}</p>
             </div>
             {profil && (
               <>
-                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                  <p className="text-gray-400 text-sm mb-1">Type de cheveux</p>
-                  <span className="bg-[#1D9E75]/20 text-[#1D9E75] font-bold px-3 py-1 rounded-full text-sm">{profil.type_cheveux}</span>
+                <div className="app-card p-4">
+                  <p className="app-muted text-sm mb-1">Type de cheveux</p>
+                  <span className="bg-[var(--color-secondary)]/15 text-[var(--color-secondary)] font-bold px-3 py-1 rounded-full text-sm">{profil.type_cheveux}</span>
                 </div>
-                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                  <p className="text-gray-400 text-sm mb-2">Caractéristiques</p>
+                <div className="app-card p-4">
+                  <p className="app-muted text-sm mb-2">Caractéristiques</p>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="bg-white/10 text-gray-300 px-2 py-1 rounded-full text-xs">Porosité {profil.porosite}</span>
-                    <span className="bg-white/10 text-gray-300 px-2 py-1 rounded-full text-xs">Élasticité {profil.elasticite}</span>
-                    <span className="bg-white/10 text-gray-300 px-2 py-1 rounded-full text-xs">Densité {profil.densite}</span>
+                    <span className="bg-[var(--color-surface-2)] text-[var(--color-text-muted)] px-2 py-1 rounded-full text-xs">Porosité {profil.porosite}</span>
+                    <span className="bg-[var(--color-surface-2)] text-[var(--color-text-muted)] px-2 py-1 rounded-full text-xs">Élasticité {profil.elasticite}</span>
+                    <span className="bg-[var(--color-surface-2)] text-[var(--color-text-muted)] px-2 py-1 rounded-full text-xs">Densité {profil.densite}</span>
                   </div>
                 </div>
                 {profil.objectifs.length > 0 && (
-                  <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                    <p className="text-gray-400 text-sm mb-2">Objectifs</p>
+                  <div className="app-card p-4">
+                    <p className="app-muted text-sm mb-2">Objectifs</p>
                     <div className="flex gap-2 flex-wrap">
                       {profil.objectifs.map((o) => (
-                        <span key={o} className="bg-[#534AB7]/20 text-[#534AB7] px-2 py-1 rounded-full text-xs">{o}</span>
+                        <span key={o} className="bg-[var(--color-accent)]/15 text-[var(--color-accent)] px-2 py-1 rounded-full text-xs">{o}</span>
                       ))}
                     </div>
                   </div>
@@ -60,14 +60,14 @@ export default function Profil() {
             )}
 
             {/* Évolution des scores */}
-            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-              <p className="text-white font-semibold mb-4">Évolution de mes scores</p>
+            <div className="app-card p-4">
+              <p className="text-[var(--color-text)] font-semibold mb-4">Évolution de mes scores</p>
               {chartData.length < 2 ? (
-                <p className="text-gray-400 text-sm">
+                <p className="app-muted text-sm">
                   Ajoute ton premier suivi pour voir ton évolution →{' '}
                   <button
                     onClick={() => navigate('/suivi')}
-                    className="text-[#1D9E75] underline"
+                    className="text-[var(--color-secondary)] underline"
                   >
                     /suivi
                   </button>
@@ -78,8 +78,8 @@ export default function Profil() {
                     <XAxis dataKey="mois" tick={{ fill: '#6b7280', fontSize: 11 }} />
                     <YAxis domain={[0, 10]} tick={{ fill: '#6b7280', fontSize: 11 }} />
                     <Tooltip
-                      contentStyle={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8 }}
-                      labelStyle={{ color: '#9ca3af', fontSize: 11 }}
+                      contentStyle={{ background: '#FFF3E0', border: '1px solid #F0D9B5', borderRadius: 8 }}
+                      labelStyle={{ color: '#6B5C4A', fontSize: 11 }}
                       itemStyle={{ fontSize: 12 }}
                     />
                     <Line type="monotone" dataKey="hydratation" stroke="#1D9E75" strokeWidth={2} dot={false} name="Hydratation" />
@@ -92,7 +92,7 @@ export default function Profil() {
 
             <button
               onClick={() => navigate('/diagnostic')}
-              className="w-full bg-[#1D9E75]/10 hover:bg-[#1D9E75]/20 border border-[#1D9E75]/30 text-[#1D9E75] font-semibold py-3 rounded-xl transition-colors"
+              className="w-full bg-[var(--color-secondary)]/10 hover:bg-[var(--color-secondary)]/20 border border-[var(--color-secondary)]/30 text-[var(--color-secondary)] font-semibold py-3 rounded-xl transition-colors"
             >
               Refaire mon diagnostic
             </button>

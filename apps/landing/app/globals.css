@@ -232,6 +232,8 @@ a {
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
   font-weight: 800;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 
@@ -652,6 +654,108 @@ a {
   .topbar {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .topbar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .topbar-nav {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .hero-grid {
+    min-height: 380px;
+    background-position: 68% top;
+  }
+
+  .hero-badge {
+    right: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    padding: 1rem 0.9rem 4rem;
+  }
+
+  .topbar {
+    margin-bottom: 2rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .topbar-nav {
+    gap: 0.5rem;
+  }
+
+  .topbar-link {
+    font-size: 0.84rem;
+  }
+
+  .hero-wrap {
+    margin-bottom: 3rem;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    padding: 0.9rem;
+    background-position: 72% top;
+  }
+
+  .hero-grid > div {
+    padding: 1rem;
+  }
+
+  .hero-badge {
+    position: static;
+    margin-top: 0.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .lead {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actions .btn,
+  .section-cta-center .btn,
+  .cta-band .btn {
+    width: 100%;
+  }
+
+  .feature-card,
+  .problem-card,
+  .proof-card,
+  .result-card,
+  .stat-card,
+  .guide-section,
+  .fail-section,
+  .success-section,
+  .cta-band {
+    padding: 1rem;
+  }
+
+  .profile-preview-badge {
+    white-space: normal;
+    width: calc(100% - 1rem);
+    left: 0.5rem;
+    transform: none;
+  }
+
+  .footer-links {
+    gap: 0.65rem;
   }
 }
 

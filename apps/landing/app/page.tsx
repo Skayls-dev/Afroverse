@@ -8,15 +8,16 @@ export default function Home() {
     <main className="page-shell">
       <div className="container">
         <header className="topbar">
-          <a href="/" className="brand" aria-label="AlwaysAfro">
+          <div className="brand">
             <Image
               src="/logoAfroverse.png"
               alt="AlwaysAfro"
+              width={236}
               height={72}
               priority
               className="brand-logo"
             />
-          </a>
+          </div>
           <nav className="topbar-nav">
             <a href="#plan" className="topbar-link">Comment ca marche</a>
             <a href="/packs" className="topbar-link">Nos packs</a>
@@ -261,7 +262,7 @@ export default function Home() {
         </section>
 
         <footer className="footer">
-          <a href="/" className="brand brand-footer" aria-label="AlwaysAfro">
+          <div className="brand brand-footer">
             <Image
               src="/logoAfroverse.png"
               alt="AlwaysAfro"
@@ -269,7 +270,7 @@ export default function Home() {
               height={60}
               className="brand-logo brand-logo-footer"
             />
-          </a>
+          </div>
           <div className="footer-links">
             <a href="/partenaires">Partenaires marques</a>
             <a href="#">Mentions legales</a>

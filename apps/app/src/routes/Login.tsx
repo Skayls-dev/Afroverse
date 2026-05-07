@@ -23,15 +23,17 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center px-4">
+    <div className="app-shell flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <img
-          src="/logoAfroverse.png"
-          alt="AlwaysAfro"
-          className="mx-auto mb-3 w-44 sm:w-48 h-auto"
-        />
-        <p className="text-gray-400 text-center mb-8">Connecte-toi à ton espace</p>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <a href={import.meta.env.VITE_LANDING_URL ?? 'http://localhost:3000'}>
+          <img
+            src="/logoAfroverse.png"
+            alt="AlwaysAfro"
+            className="mx-auto mb-3 w-44 sm:w-48 h-auto cursor-pointer"
+          />
+        </a>
+        <p className="app-muted text-center mb-8">Connecte-toi à ton espace</p>
+        <form onSubmit={handleSubmit} className="space-y-4 app-card p-4 sm:p-5">
           <input
             type="email"
             value={email}
@@ -39,7 +41,7 @@ export default function Login() {
             placeholder="Email"
             required
             autoComplete="email"
-            className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#1D9E75]"
+            className="w-full bg-[var(--color-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-secondary)]"
           />
           <input
             type="password"
@@ -48,20 +50,20 @@ export default function Login() {
             placeholder="Mot de passe"
             required
             autoComplete="current-password"
-            className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#1D9E75]"
+            className="w-full bg-[var(--color-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-secondary)]"
           />
           {error && <p className="text-red-400 text-sm">{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#1D9E75] hover:bg-[#178864] disabled:opacity-50 text-white font-semibold py-3 rounded-xl transition-colors"
+            className="w-full app-btn-primary disabled:opacity-50 font-semibold py-3 rounded-xl transition-colors"
           >
             {loading ? 'Connexion…' : 'Se connecter'}
           </button>
         </form>
-        <p className="text-gray-500 text-sm text-center mt-6">
+        <p className="app-muted text-sm text-center mt-6">
           Pas encore de compte ?{' '}
-          <Link to="/register" className="text-[#534AB7] hover:underline">Créer un compte</Link>
+          <Link to="/register" className="text-[var(--color-accent)] hover:underline">Créer un compte</Link>
         </p>
       </div>
     </div>
