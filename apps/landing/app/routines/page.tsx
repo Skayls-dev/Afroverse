@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import type { EtapeRoutine, TypeCheveux } from '@alwaysafro/types'
 import RoutinesTabs from './RoutinesTabs'
+import DownloadGuideForm from './DownloadGuideForm'
 
 export const dynamic = 'force-dynamic'
 
@@ -66,6 +67,8 @@ export default async function RoutinesPage() {
         </section>
 
         <RoutinesTabs etapesParType={etapesParType} />
+
+        <DownloadGuideForm />
 
         <section className="cta-band routines-cta-band">
           <h2 className="cta-title">Passe du general au sur-mesure</h2>

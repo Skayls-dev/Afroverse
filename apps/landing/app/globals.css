@@ -539,6 +539,127 @@ a {
   margin-bottom: 1rem;
 }
 
+/* ── Guide download CTA ──────────────────────────────────── */
+.guide-download-section {
+  margin: 2rem 0 2.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #0d7a5c 100%);
+  padding: 2rem 2rem;
+  color: #fff;
+}
+
+.guide-download-inner {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.guide-download-icon {
+  font-size: 2.4rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.guide-download-content {
+  flex: 1;
+}
+
+.guide-download-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.guide-download-desc {
+  margin: 0 0 1.1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+}
+
+.guide-download-form {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.guide-email-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.95rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-text);
+}
+
+.guide-email-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.guide-download-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.guide-download-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.guide-download-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.guide-download-success {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 0.8rem 1.1rem;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.guide-download-success p {
+  margin: 0;
+}
+
+.guide-download-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #ffe0e0;
+}
+
+.guide-download-privacy {
+  margin: 0.75rem 0 0;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 540px) {
+  .guide-download-inner {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .guide-download-form {
+    flex-direction: column;
+  }
+
+  .guide-email-input {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
 .routines-tabs-bar {
   display: flex;
   gap: 0.5rem;
