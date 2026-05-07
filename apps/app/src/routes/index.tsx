@@ -5,6 +5,7 @@ import Diagnostic from './Diagnostic'
 import Suivi from './Suivi'
 import Recommandations from './Recommandations'
 import Profil from './Profil'
+import RoutinesGuide from './RoutinesGuide'
 import ProtectedRoute from '../components/shared/ProtectedRoute'
 
 export default function AppRoutes() {
@@ -16,6 +17,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Diagnostic />} />
         <Route path="/diagnostic" element={<Diagnostic />} />
         <Route path="/suivi" element={<Suivi />} />
+        <Route path="/routines" element={<RoutinesGuide />} />
         <Route path="/recommandations" element={<Recommandations />} />
         <Route path="/profil" element={<Profil />} />
       </Route>
